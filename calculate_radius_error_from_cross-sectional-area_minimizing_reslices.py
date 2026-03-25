@@ -1038,7 +1038,7 @@ def _print_results_table(
     t_cl: np.ndarray,
     r_eff: np.ndarray,
     cdm_val: np.ndarray,
-    r_eff_min: float = 0.5,
+    r_eff_min: float = 0.564189583547757,
     ) -> None:
         """
         Prints a fixed-width table with:
