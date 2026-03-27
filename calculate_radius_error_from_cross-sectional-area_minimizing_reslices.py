@@ -241,7 +241,7 @@ def extract_boundary_slice(subvol, local_x, local_y, local_z, global_x, global_y
     
     # Clean and measure
     reslice_clean, area, perimeter = clean_and_measure_slice(reslice)
-    r_eff = calculate_effective_radius(area, perimeter)
+    r_eff = calculate_effective_radius(area)
     
     return reslice_clean, r_eff, perimeter, area
 
@@ -321,7 +321,7 @@ def find_minimum_area_reslice(subvol, center_x, center_y, center_z, cdm_value):
     
     # Calculate effective radius from best reslice
     _, final_area, final_perimeter = clean_and_measure_slice(best_reslice)
-    r_eff = calculate_effective_radius(final_area, final_perimeter)
+    r_eff = calculate_effective_radius(final_area)
     
     return best_reslice, r_eff, final_perimeter, final_area
 
@@ -445,16 +445,16 @@ def clean_and_measure_slice(reslice):
     return clean_slice, area, perimeter
 
 
-def calculate_effective_radius(area, perimeter):
+def calculate_effective_radius(area):
     """
-    Calculate effective radius from area and perimeter.
-    r_eff = perimeter / (2 * pi)
+    Calculate effective radius from area.
     """
     
-    if perimeter == 0:
-        return 0
+    if area <= 0:
+        return 0.5
+        
+    r_eff = np.sqrt(area/np.pi)
     
-    r_eff = perimeter / (2 * np.pi)
     return r_eff
 
 
