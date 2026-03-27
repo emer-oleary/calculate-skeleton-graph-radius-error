@@ -79,7 +79,7 @@ A coarse-to-fine angular search is performed to find the 2D reslice orientation 
 * finest search: `1°`
 
 ### 5. Effective radius calculation
-The central connected component of the best reslice is isolated, and its perimeter is measured. Effective radius is then calculated as:
+The central connected component of the best reslice is isolated, and its 2D cross-sectional area is measured. Effective radius is then calculated as:
 
 ```text
 r_eff = sqrt(area / π )
